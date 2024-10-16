@@ -1,39 +1,43 @@
-import logo from "./logo.svg"
-import {useEffect} from "react";
-import Test from "./Test"
-import { Title } from "./Component";
-import Bootstrap from "./Bootstrap";
-import Tailwind from "./tailwind";
+import { createElement } from "react"
 import './style.scss'
-//import './tailwind.css'
-import styles from './App.module.css'
+function Button(props) {
+	return <button>{props.text}</button>
+}
 
 function App() {
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      // analytici bilgilendir
-    }
-  }, [])
+  const name = 'Tayfun'
+  const todos = ['todo1', 'todo2', 'todo3']
+	/*
+  const h1 = createElement('h1', null, 'prototurk.com')
+  const ul = createElement('ul', null, todos.map(todo => createElement('li', null, todo)))
+	const button = createElement(Button, {
+		text: 'Buton Texti'
+	}, null)
+  return createElement('main', {
+    className: 'test',
+    id: 'main'
+  }, h1, ul, button)
+	 */
+	const searchFunction = () => {
+		alert('hello!')
+	}
+
 
   return (
-    <div className={styles.App}>
-      <Title>{process.env.NODE_ENV}</Title>
-      <Title theme="dark">{process.env.NODE_ENV}</Title>
-      <p className="env">
-        {process.env.REACT_APP_API_URL}
-        <span>Test</span>
-      </p>
-      <Test />
-      {process.env.NODE_ENV === 'production' && (
-        <>
-          <img src="/logo192.png" alt=""/>
-          <img src={logo} alt=""/>
-        </>
-      )}
-      <Bootstrap />
-      <tailwind />
-    </div>
+    <>
+    <Button text="merhaba butonu" />
+    <h1 tabIndex="3" style={{color: 'red', backgroundColor: 'yellow'}}>prototurk.com</h1>
+    <label htmlFor="search" tabIndex="2" onClick={() => alert('merhaba')}>Arama </label>
+    <input type="text" id="search" tabIndex="1" />
+    <ul>
+      {todos.map((todo, index) => (
+        <li key={index}>
+          {todo}
+        </li>
+      ))}
+    </ul>
+  </>
   );
 }
 
